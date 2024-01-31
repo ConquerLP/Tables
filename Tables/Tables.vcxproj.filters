@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien\Classes">
+      <UniqueIdentifier>{3c45c9ac-ceda-481d-ad00-f3f4313f847e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Classes">
+      <UniqueIdentifier>{5dbe2901-8ed8-4f4c-9283-8da01a55703b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Classes\Base Classes">
+      <UniqueIdentifier>{61d9026e-d4b0-47d4-93ad-ca0f2626ab6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Classes\Base Classes">
+      <UniqueIdentifier>{24bd7d07-74e8-438d-8f91-2e1b8a59193f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="macros.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="object.h">
+      <Filter>Headerdateien\Classes\Base Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="hashtable.h">
+      <Filter>Headerdateien\Classes\Base Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="string.h">
+      <Filter>Headerdateien\Classes\Base Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="std_lib.h">
+      <Filter>Headerdateien\Classes\Base Classes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.c">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="object.c">
+      <Filter>Quelldateien\Classes\Base Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="string.c">
+      <Filter>Quelldateien\Classes\Base Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="hashtable.c">
+      <Filter>Quelldateien\Classes\Base Classes</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
