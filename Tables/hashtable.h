@@ -3,19 +3,25 @@
 #define HASHTABLE_H
 
 #include "macros.h"
-
-typedef struct _Hashentry {
-	void* super;
-	void* key;
-	void* entry;
-	_int hash_value;
-	struct _Hashentry* next;
-}Hashentry;
+#include "object.h"
 
 typedef struct _Hashtable {
-	void* super;
+	Object* object;
 	_int number_of_elements;
-	Hashentry** entries;
+	_int capacity;
+	float loadFactor;
+	void** entries;
+	void (*clear)(void* table);
+	boolean (*contains)(void* table, void* value);
+	boolean (*containsKey)(void* table, void* key);
+	void* (*get)(void* table, void* key);
+	boolean (*isEmpty)(void* table);
+	void (*put)(void* table, void* key, void* value);
+	void (*remove)(void* table, void* key);
+	void (*replace)(void* table, void* key, void* value);
+	_int (*size)(void* table);
 }Hashtable;
+
+Hashtable* new_Hashtable();
 
 #endif // !HASHTABLE_H

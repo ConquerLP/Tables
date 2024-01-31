@@ -14,8 +14,8 @@
 #define _int size_t
 #define null NULL
 
-#define EROOR(msg) { printf(msg); exit(1); }
-#define CHECK(ptr) if(!ptr) { printf("Nullpointer in file: %s\nLine: %i", __FILE__, __LINE__); exit(1); }
+#define EROOR(msg) { fprintf(stderr, "%s", msg); exit(1); }
+#define CHECK(ptr) if(!ptr) { fprintf(stderr, "Nullpointer in file: %s\nLine: %i", __FILE__, __LINE__); exit(1); }
 #define Malloc(ptr, type, amount) ptr = malloc(sizeof(type) * (amount)); CHECK(ptr);
 #define Realloc(ptr, type, amount) ptr = realloc(ptr, sizeof(type) * (amount)); CHECK(ptr);
 #define COPY_STRING(dest, src)  { CHECK(src); Malloc(dest, char, strlen(src) + 1); memset(dest, 0, strlen(src) + 1); strcpy(dest, src); }

@@ -31,7 +31,6 @@ static boolean equals(void* obj1, void* obj2)
 static char* toString(void* obj)
 {
 	return "object";
-
 }
 
 static _int getHashCode(void* obj)
