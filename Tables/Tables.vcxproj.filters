@@ -42,6 +42,9 @@
     <ClInclude Include="std_lib.h">
       <Filter>Headerdateien\Classes\Base Classes</Filter>
     </ClInclude>
+    <ClInclude Include="array.h">
+      <Filter>Headerdateien\Classes\Base Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -54,6 +57,9 @@
       <Filter>Quelldateien\Classes\Base Classes</Filter>
     </ClCompile>
     <ClCompile Include="hashtable.c">
+      <Filter>Quelldateien\Classes\Base Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="array.c">
       <Filter>Quelldateien\Classes\Base Classes</Filter>
     </ClCompile>
   </ItemGroup>

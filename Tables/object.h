@@ -12,6 +12,6 @@ typedef struct _Object {
 	_int (*getHashCode)(void* obj);
 }Object;
 
-Object* new_object();
+Object* new_Object();
 
 #endif // !OBJECT_H

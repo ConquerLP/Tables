@@ -14,7 +14,7 @@
 #define _int size_t
 #define null NULL
 
-#define EROOR(msg) { fprintf(stderr, "%s", msg); exit(1); }
+#define ERROR(msg) { fprintf(stderr, "%s", msg); exit(1); }
 #define CHECK(ptr) if(!ptr) { fprintf(stderr, "Nullpointer in file: %s\nLine: %i", __FILE__, __LINE__); exit(1); }
 #define Malloc(ptr, type, amount) ptr = malloc(sizeof(type) * (amount)); CHECK(ptr);
 #define Realloc(ptr, type, amount) ptr = realloc(ptr, sizeof(type) * (amount)); CHECK(ptr);
@@ -25,5 +25,6 @@
 #define APPEND_STRING(str, appender) { Realloc(str, char, strlen(str) + strlen(appender) + 1); \
 		memset(str + strlen(str) + 1, 0, strlen(appender) + 1); strcat(str, appender); }
 #define BOOLEAN_STRING(expression) (expression) ? "true" : "false"
+#define CAST_TO_OBJECT(work_ptr, ptr) work_ptr = (*(Object**)ptr)
 
 #endif // !MACROS_H

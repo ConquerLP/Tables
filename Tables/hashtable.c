@@ -30,7 +30,7 @@ Hashtable* new_Hashtable()
 {
 	Hashtable* table;
 	Malloc(table, Hashtable, 1);
-	table->object = new_object();
+	table->object = new_Object();
 	table->number_of_elements = 0;
 	table->capacity = INTIAL_CAPACITY;
 	table->loadFactor = LOAD_FACTOR;

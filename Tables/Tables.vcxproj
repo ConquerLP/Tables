@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="array.h" />
     <ClInclude Include="hashtable.h" />
     <ClInclude Include="macros.h" />
     <ClInclude Include="object.h" />
@@ -135,6 +136,7 @@
     <ClInclude Include="string.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="array.c" />
     <ClCompile Include="hashtable.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="object.c" />

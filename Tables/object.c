@@ -5,7 +5,7 @@ static boolean equals(void* obj1, void* obj2);
 static char* toString(void* obj);
 static _int getHashCode(void* obj);
 
-Object* new_object()
+Object* new_Object()
 {
 	Object* object;
 	Malloc(object, Object, 1);
@@ -19,7 +19,7 @@ Object* new_object()
 
 static void* clone(void* obj)
 {
-	Object* clone = new_object();
+	Object* clone = new_Object();
 	clone->hashvalue = getHashCode(obj);
 	return clone;
 }
