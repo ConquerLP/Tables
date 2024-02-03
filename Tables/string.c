@@ -26,7 +26,7 @@ String* new_String(char* text)
 
 static void* clone(void* obj)
 {
-	return new_string(toString(obj));
+	return new_String(toString(obj));
 }
 
 static char* toString(void* obj)
@@ -36,7 +36,7 @@ static char* toString(void* obj)
 
 static _int getHashCode(void* obj)
 {
-	char* string = ((String*)obj)->string;
+	char* string = toString(obj);
 	_int i = 0;
 	_int hashcode = 0;
 	while (string[i] != 0) {

@@ -8,7 +8,7 @@ typedef struct _String {
 	Object* object;
 	char* string;
 	void (*set)(void* string, char* new_text);
-	void (*append)(void* string);
+	void (*append)(void* string, char* appending_text);
 }String;
 
 String* new_String(char* text);

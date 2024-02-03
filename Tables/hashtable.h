@@ -19,7 +19,7 @@ typedef struct _Hashtable {
 	void (*put)(void* table, void* key, void* value);
 	void (*remove)(void* table, void* key);
 	void (*replace)(void* table, void* key, void* value);
-	_int (*size)(void* table);
+	_int (*getSize)(void* table);
 }Hashtable;
 
 Hashtable* new_Hashtable();

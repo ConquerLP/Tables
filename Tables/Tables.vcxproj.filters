@@ -39,11 +39,11 @@
     <ClInclude Include="string.h">
       <Filter>Headerdateien\Classes\Base Classes</Filter>
     </ClInclude>
-    <ClInclude Include="std_lib.h">
-      <Filter>Headerdateien\Classes\Base Classes</Filter>
-    </ClInclude>
     <ClInclude Include="array.h">
       <Filter>Headerdateien\Classes\Base Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="std_lib.h">
+      <Filter>Headerdateien\Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
