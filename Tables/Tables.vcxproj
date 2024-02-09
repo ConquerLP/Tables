@@ -18,6 +18,29 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="array.h" />
+    <ClInclude Include="arrayList.h" />
+    <ClInclude Include="hashtable.h" />
+    <ClInclude Include="list.h" />
+    <ClInclude Include="macro.h" />
+    <ClInclude Include="node.h" />
+    <ClInclude Include="object.h" />
+    <ClInclude Include="stack.h" />
+    <ClInclude Include="stdlib.h" />
+    <ClInclude Include="string.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="array.c" />
+    <ClCompile Include="arrayList.c" />
+    <ClCompile Include="hashtable.c" />
+    <ClCompile Include="list.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="node.c" />
+    <ClCompile Include="objects.c" />
+    <ClCompile Include="stack.c" />
+    <ClCompile Include="string.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -127,21 +150,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="array.h" />
-    <ClInclude Include="hashtable.h" />
-    <ClInclude Include="macros.h" />
-    <ClInclude Include="object.h" />
-    <ClInclude Include="std_lib.h" />
-    <ClInclude Include="string.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="array.c" />
-    <ClCompile Include="hashtable.c" />
-    <ClCompile Include="main.c" />
-    <ClCompile Include="object.c" />
-    <ClCompile Include="string.c" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

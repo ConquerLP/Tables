@@ -2,26 +2,40 @@
 
 #define HASHTABLE_H
 
-#include "macros.h"
 #include "object.h"
 
-typedef struct _Hashtable {
+#define LOADFACTOR 0.75
+#define INTIAL_CAPACITY 11
+
+typedef struct _Hashentry{
+	void* key;
+	void* value;
+	struct Hashentry* next;
+	struct Hashentry* prev;
+}Hashentry;
+
+typedef struct _Hashtable{
 	Object* object;
-	_int number_of_elements;
+	_int numberOfElements;
 	_int capacity;
-	float loadFactor;
-	void** entries;
-	void (*clear)(void* table);
-	boolean (*contains)(void* table, void* value);
-	boolean (*containsKey)(void* table, void* key);
-	void* (*get)(void* table, void* key);
-	boolean (*isEmpty)(void* table);
-	void (*put)(void* table, void* key, void* value);
-	void (*remove)(void* table, void* key);
-	void (*replace)(void* table, void* key, void* value);
-	_int (*getSize)(void* table);
+	double loadfactor;
+	Hashentry** entries;
+	void (*clear)(void* hashstable);
+	boolean (*containsValue)(void* hashstable, void* value);
+	boolean (*containsKey)(void* hashstable, void* key);
+	void* (*get)(void* hashstable, void* key);
+	boolean (*isEmpty)(void* hashstable);
+	void (*put)(void* hashstable, void* key, void* value);
+	void (*putIfAbsent)(void* hashstable, void* key, void* value);
+	void (*removeByKey)(void* hashstable, void* key);
+	void (*removeByKeyAndValue)(void* hashstable, void* key, void* value);
+	void (*replaceByKey)(void* hashtable, void* key, void* newValue);
+	void (*replaceByKeyAndValue)(void* hashtable, void* key, void* value, void* newValue);
+	_int (*getSize)(void* hashtable);
+	void (*rehash)(void* hashtable);
 }Hashtable;
 
-Hashtable* new_Hashtable();
+Hashtable* new_HashtableDefault();
+Hashtable* new_Hashtable(double loadfactor, _int initialCapacity);
 
-#endif // !HASHTABLE_H
+#endif

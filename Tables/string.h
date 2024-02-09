@@ -4,13 +4,13 @@
 
 #include "object.h"
 
-typedef struct _String {
+typedef struct _String{
 	Object* object;
 	char* string;
-	void (*set)(void* string, char* new_text);
-	void (*append)(void* string, char* appending_text);
+	void (*append)(void* string, char* text);
+	void (*setString)(void* string, char* new_text),
 }String;
 
 String* new_String(char* text);
 
-#endif // !STRING_H
+#endif

@@ -1,17 +1,18 @@
 #include "array.h"
-#include "string.h"
 
-static void* clone(void* obj);
-static char* toString(void* obj);
-static _int getHashCode(void* obj);
+static void* clone(void* object);
+static char* toString(void* object);
+static _int getHashvalue(void* object);
 
 static _int getSize(void* array);
-static void* get(void* array, _int index);
 static void set(void* array, void* element, _int index);
+static void* get(void* array, _int index);
+
+static void checkIndex(void* array, _int index);
 
 Array* new_Array(_int size)
 {
-	if (size <= 0) ERROR("Array size is 0 or negative.");
+	if(size <= 0) ERROR("Invalid array size.");
 	Array* array;
 	Malloc(array, Array, 1);
 	array->object = new_Object();
@@ -19,48 +20,57 @@ Array* new_Array(_int size)
 	void** elements;
 	Malloc(elements, void*, size);
 	array->elements = elements;
+	for(_int i = 0; i < size; ++i){
+		elements[i] = NULL;
+	}
 	array->getSize = getSize;
-	array->get = get;
 	array->set = set;
+	array->get = get;
 	array->object->clone = clone;
 	array->object->toString = toString;
-	array->object->getHashCode = getHashCode;
+	array->object->getHashvalue = getHashvalue;
+	updateHashValue(array);
 	return array;
 }
 
-static void* clone(void* obj)
+static void* clone(void* object)
 {
-	CHECK(obj);
-	Array* clone = new_Array(getSize(obj));
-	for (_int i = 0; i < getSize(obj); ++i) {
-		clone->set(clone, get(obj, i), i);
+	CHECK(object);
+	Array* clone = new_Array(getSize(object));
+	for(_int i = 0; i < getSize(object); ++i){
+		clone->set(clone, get(object, i), i);
 	}
 	return clone;
 }
 
-static char* toString(void* obj)
+static char* toString(void* object)
 {
-	CHECK(obj);
-	Array* array_ptr = obj;
-	Object* object_ptr;
+	CHECK(object);
 	String* string = new_String("");
-	for (_int i = 0; i < getSize(obj); ++i) {
-		object_ptr = get(obj, i);
-		string->append(string, "{ ");
-		string->append(string, object_ptr->toString(object_ptr));
-		string->append(string, " }, ");
+	Object* interface = NULL;
+	void* element = NULL;
+	for(_int i = 0; i < getSize(object); ++i){
+		element = get(object, i);
+		interface = this(element);
+		if(element && interface){
+			string->append(string, "{ ");
+			string->append(string, interface->toString(element));
+			string->append(string, " }, ");
+		}
 	}
 	return string->object->toString(string);
 }
 
-static _int getHashCode(void* obj)
+static _int getHashvalue(void* object)
 {
-	CHECK(obj);
+	CHECK(object);
 	_int hashvalue = 0;
-	Object* object_ptr;
-	for (_int i = 0; i < getSize(obj); ++i) {
-		object_ptr = get(obj, i);
-		hashvalue += object_ptr->getHashCode(object_ptr);
+	Object* interface = NULL;
+	void* element = NULL;
+	for(_int i = 0; i < getSize(object); ++i){
+		element = get(object, i);
+		interface = this(element);
+		if(element && interface) hashvalue += interface->getHashvalue(element);
 	}
 	return hashvalue;
 }
@@ -71,17 +81,24 @@ static _int getSize(void* array)
 	return ((Array*)array)->size;
 }
 
-static void* get(void* array, _int index)
-{
-	CHECK(array);
-	if (index >= getSize(array)) ERROR("Index out of bounds array.");
-	return ((Array*)array)->elements[index];
-}
-
 static void set(void* array, void* element, _int index)
 {
 	CHECK(array);
 	CHECK(element);
-	if (index >= getSize(array)) ERROR("Index out of bounds array.");
+	checkIndex(array, index);
 	((Array*)array)->elements[index] = element;
+	updateHashValue(array);
+}
+
+static void* get(void* array, _int index)
+{
+	CHECK(array);
+	checkIndex(array, index);
+	return ((Array*)array)->elements[index];
+}
+
+static void checkIndex(void* array, _int index)
+{
+	CHECK(array);
+	if(index < 0 || index >= getSize(array)) ERROR("Index out of bounds array.");
 }

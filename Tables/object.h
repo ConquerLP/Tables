@@ -2,16 +2,20 @@
 
 #define OBJECT_H
 
-#include "macros.h"
+#include "macro.h"
 
-typedef struct _Object {
+#define INVALID_INDEX -1
+
+typedef struct _Object{
 	_int hashvalue;
-	void* (*clone)(void* obj);
-	boolean (*equals)(void* obj1, void* obj2);
-	char* (*toString)(void* obj);
-	_int (*getHashCode)(void* obj);
+	boolean (*equals)(void* object1, void* object2);
+	void* (*clone)(void* object);
+	char* (*toString)(void* object);
+	_int (*getHashvalue)(void* object);
 }Object;
 
 Object* new_Object();
+Object* this(void* object);
+void updateHashValue(void* object);
 
-#endif // !OBJECT_H
+#endif
