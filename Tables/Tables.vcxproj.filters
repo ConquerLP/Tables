@@ -13,66 +13,72 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Headerdateien\BaseClasses">
+      <UniqueIdentifier>{90fe1006-0231-4199-8802-c320013bef22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\BaseBlasses">
+      <UniqueIdentifier>{e97c34db-7c23-4c78-8a8c-785cb572fcf5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="hashtable.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="list.h">
-      <Filter>Headerdateien</Filter>
+    <ClInclude Include="array.h">
+      <Filter>Headerdateien\BaseClasses</Filter>
     </ClInclude>
     <ClInclude Include="arrayList.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>Headerdateien\BaseClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="hashtable.h">
+      <Filter>Headerdateien\BaseClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="list.h">
+      <Filter>Headerdateien\BaseClasses</Filter>
     </ClInclude>
     <ClInclude Include="node.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="stack.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="macro.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>Headerdateien\BaseClasses</Filter>
     </ClInclude>
     <ClInclude Include="object.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>Headerdateien\BaseClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="stack.h">
+      <Filter>Headerdateien\BaseClasses</Filter>
     </ClInclude>
     <ClInclude Include="string.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>Headerdateien\BaseClasses</Filter>
     </ClInclude>
-    <ClInclude Include="array.h">
-      <Filter>Headerdateien</Filter>
+    <ClInclude Include="macro.h">
+      <Filter>Headerdateien\BaseClasses</Filter>
     </ClInclude>
     <ClInclude Include="stdlib.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="hashtable.c">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="stack.c">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="list.c">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="arrayList.c">
+    <ClCompile Include="main.c">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="array.c">
-      <Filter>Quelldateien</Filter>
+      <Filter>Quelldateien\BaseBlasses</Filter>
+    </ClCompile>
+    <ClCompile Include="arrayList.c">
+      <Filter>Quelldateien\BaseBlasses</Filter>
+    </ClCompile>
+    <ClCompile Include="hashtable.c">
+      <Filter>Quelldateien\BaseBlasses</Filter>
+    </ClCompile>
+    <ClCompile Include="list.c">
+      <Filter>Quelldateien\BaseBlasses</Filter>
     </ClCompile>
     <ClCompile Include="node.c">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="string.c">
-      <Filter>Quelldateien</Filter>
+      <Filter>Quelldateien\BaseBlasses</Filter>
     </ClCompile>
     <ClCompile Include="objects.c">
-      <Filter>Quelldateien</Filter>
+      <Filter>Quelldateien\BaseBlasses</Filter>
     </ClCompile>
-    <ClCompile Include="main.c">
-      <Filter>Quelldateien</Filter>
+    <ClCompile Include="stack.c">
+      <Filter>Quelldateien\BaseBlasses</Filter>
+    </ClCompile>
+    <ClCompile Include="string.c">
+      <Filter>Quelldateien\BaseBlasses</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

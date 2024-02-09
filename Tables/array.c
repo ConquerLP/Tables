@@ -1,4 +1,5 @@
 #include "array.h"
+#include "string.h"
 
 static void* clone(void* object);
 static char* toString(void* object);

@@ -20,7 +20,7 @@ static boolean contains(void* arrayList, void* object);
 static _int indexOf(void* arrayList, void* element);
 static void* toArray(void* arrayList);
 
-static void checkIndex(void* arrayList, _int index);
+static _int checkIndex(void* arrayList, _int index);
 
 ArrayList* new_ArrayList()
 {
@@ -50,7 +50,7 @@ ArrayList* new_ArrayList()
 static void* clone(void* object)
 {
 	CHECK(object);
-	Arraylist* clone = new_ArrayList();
+	ArrayList* clone = new_ArrayList();
 	for(_int i = 0; i < getSize(object); ++i){
 		clone->add(clone, get(object, i));
 	}
@@ -139,8 +139,8 @@ static void removeIndex (void* arrayList, _int index)
 			continue;
 		}
 	}
-	array_ptr->elements = new_elements;
-	array_ptr->size -= 1;
+	arrayList_ptr->elements = new_elements;
+	arrayList_ptr->size -= 1;
 	updateHashValue(arrayList);
 }
 
@@ -181,7 +181,7 @@ static void addAllArray(void* arrayList, void* array)
 	CHECK(array);
 	Array* array_ptr = array;
 	ArrayList* arrayList_ptr = arrayList;
-	for(_int i = 0; i < array_ptr->getSize(list); ++i){
+	for(_int i = 0; i < array_ptr->getSize(arrayList); ++i){
 		arrayList_ptr->add(arrayList_ptr, array_ptr->get(array_ptr, i));
 		arrayList_ptr->size += 1;
 	}
@@ -218,15 +218,17 @@ static void* toArray(void* arrayList)
 {
 	CHECK(arrayList);
 	Array* array = new_Array(getSize(arrayList));
+	ArrayList* arrayList_ptr = arrayList;
 	for(_int i = 0; i < getSize(arrayList); ++i){
-		array->set(array, arrayList->get(arrayList, i), i);
+		array->set(array, arrayList_ptr->get(arrayList, i), i);
 	}
 	return array;
 }
 
-static void checkIndex(void* arrayList, _int index)
+static _int checkIndex(void* arrayList, _int index)
 {
-	CHECK(list);
-	if(index == INVALID_INDEX) return;
+	CHECK(arrayList);
+	if(index == INVALID_INDEX) return INVALID_INDEX;
 	if(index >= getSize(arrayList)) ERROR("Index out of bounds arrayList.");
+	return index;
 }

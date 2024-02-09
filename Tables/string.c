@@ -13,32 +13,32 @@ String* new_String(char* text)
 	Malloc(string, String, 1);
 	string->object = new_Object();
 	COPY_STRING(string->string, text);
-	string->clone = clone;
-	string->toString = toString;
-	string->getHashvalue = getHashvalue;
+	string->object->clone = clone;
+	string->object->toString = toString;
+	string->object->getHashvalue = getHashvalue;
 	
 	string->append = append;
 	string->setString = setString;
 	
-	updateHashvalue(string);
+	updateHashValue(string);
 	return string;
 }
 
 static void* clone(void* object)
 {
-	CHEK(object);
+	CHECK(object);
 	return new_String(toString(object));
 }
 
 static char* toString(void* object)
 {
-	CHEK(object);
+	CHECK(object);
 	return ((String*)object)->string;
 }
 
 static _int getHashvalue(void* object)
 {
-	CHEK(object);
+	CHECK(object);
 	char* string = toString(object);
 	_int i = 0;
 	_int hashvalue = 0;
@@ -52,7 +52,7 @@ static _int getHashvalue(void* object)
 
 static void append(void* string, char* text)
 {
-	CHEK(object);
+	CHECK(string);
 	char* new_text;
 	MERGE_STRING(new_text, toString(string), text);
 	setString(string, new_text);
@@ -60,7 +60,7 @@ static void append(void* string, char* text)
 
 static void setString(String* string, char* new_text)
 {
-	CHEK(object);
+	CHECK(string);
 	COPY_STRING(string->string, new_text);
-	updateHashvalue(string);
+	updateHashValue(string);
 }

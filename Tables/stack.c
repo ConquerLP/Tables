@@ -65,7 +65,7 @@ static void* pop(void* stack)
 	Stack* stack_ptr = stack;
 	if(stack_ptr->stackPtr <= 0) return NULL;
 	void* poped = peek(stack);
-	stack->elements[stack_ptr->stackPtr] = NULL;
+	stack_ptr->elements[stack_ptr->stackPtr] = NULL;
 	stack_ptr->stackPtr -= 1;
 	return poped;
 }

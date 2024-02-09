@@ -30,10 +30,10 @@ Node* node_get_N(Node* node, _int index)
 		if(i == index) break;
 	}
 	if(i != index || temp == NULL) ERROR("Index out of bounds Nodes.");
-	return tmp;
+	return temp;
 }
 
-void node_insert_before(Node* node, Node* insterted)
+void node_insert_before(Node* node, Node* inserted)
 {
 	CHECK(node);
 	CHECK(inserted);
@@ -53,17 +53,17 @@ void node_insert_before(Node* node, Node* insterted)
 void node_insert_after(Node* node, Node* insterted)
 {
 	CHECK(node);
-	CHECK(inserted);
+	CHECK(insterted);
 	if(node->next){
-		node->next->prev = inserted;
-		inserted->next = node->next;
-		inserted->prev = node;
-		node->next = inserted;
+		node->next->prev = insterted;
+		insterted->next = node->next;
+		insterted->prev = node;
+		node->next = insterted;
 	}
 	else {
-		inserted->next = NULL;
-		inserted->prev = node;
-		node->next = inserted;
+		insterted->next = NULL;
+		insterted->prev = node;
+		node->next = insterted;
 	}
 }
 

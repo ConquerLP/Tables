@@ -4,5 +4,11 @@
 
 #include "macro.h"
 #include "object.h"
+#include "array.h"
+#include "arrayList.h"
+#include "hashtable.h"
+#include "list.h"
+#include "stack.h"
+#include "string.h"
 
 #endif

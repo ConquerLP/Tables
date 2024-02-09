@@ -18,13 +18,13 @@ static void clear (void* list);
 static boolean contains (void* list, void* object);
 static void* get (void* list, _int index);
 static _int indexOf (void* list, void* object);
-static boolean isEmpty void* list);
+static boolean isEmpty (void* list);
 static _int getSize (void* list);
 static void removeIndex (void* list, _int index);
 static void removeObject (void* list, void* object);
-static void replaceIndex (void* list, void* replacement _int index);
+static void replaceIndex (void* list, void* replacement, _int index);
 static void replaceObject (void* list, void* object, void* replacement);
-static struct _List* sublist (void* list, _int startIndex, _int endIndex)
+static struct _List* sublist(void* list, _int startIndex, _int endIndex);
 static void* toArray (void* list);
 
 static _int checkIndex(void* list, _int index);
@@ -68,7 +68,7 @@ static void* clone(void* object)
 	CHECK(object);
 	List* clone = new_List();
 	for(_int i = 0; i < getSize(object); ++i){
-		clone->add(list, get(object, i));
+		clone->add(clone, get(object, i));
 	}
 	updateHashValue(clone);
 	return clone;
@@ -121,6 +121,7 @@ static void addAfter (void* list, void* object, _int index)
 {
 	CHECK(list);
 	CHECK(object);
+	List* list_ptr = list;
 	if(checkIndex(list, index) == INVALID_INDEX) return;
 	node_insert_after(node_get_N(getStartNode(list), index), new_Node(object));
 	list_ptr->size += 1;
@@ -131,6 +132,7 @@ static void addBefore (void* list, void* object, _int index)
 {
 	CHECK(list);
 	CHECK(object);
+	List* list_ptr = list;
 	if(checkIndex(list, index) == INVALID_INDEX) return;
 	node_insert_before(node_get_N(getStartNode(list), index), new_Node(object));
 	list_ptr->size += 1;
@@ -150,7 +152,7 @@ static void addAllList (void* list, void* anotherList)
 static void addAllArray (void* list, void* array)
 {
 	CHECK(list);
-	CHECK(anotherList);
+	CHECK(array);
 	Array* array_ptr = array;
 	for(_int i = 0; i < array_ptr->getSize(array_ptr); ++i){
 		add(list, array_ptr->get(array_ptr, i));
@@ -160,7 +162,7 @@ static void addAllArray (void* list, void* array)
 static void addAllArrayList (void* list, void* arrayList)
 {
 	CHECK(list);
-	CHECK(anotherList);
+	CHECK(arrayList);
 	ArrayList* arrayList_ptr = arrayList;
 	for(_int i = 0; i < arrayList_ptr->getSize(arrayList_ptr); ++i){
 		add(list, arrayList_ptr->get(arrayList_ptr, i));
@@ -206,7 +208,7 @@ static _int indexOf (void* list, void* object)
 	return INVALID_INDEX;
 }
 
-static boolean isEmpty void* list)
+static boolean isEmpty (void* list)
 {
 	CHECK(list);
 	if(getSize(list) == 0) return true;
@@ -224,7 +226,7 @@ static void removeIndex (void* list, _int index)
 	CHECK(list);
 	if(checkIndex(list, index) == INVALID_INDEX) return;
 	List* list_ptr = list;
-	node_pop(node_get_N(getStartNode(list), index));
+	node_pop(getStartNode(list), index);
 	list_ptr->size -= 1;
 	updateHashValue(list);
 }
@@ -281,7 +283,7 @@ static _int checkIndex(void* list, _int index)
 	CHECK(list);
 	if(index == INVALID_INDEX) return INVALID_INDEX;
 	if(index >= getSize(list)) ERROR("Index out of bounds List.");	
-	else return index;
+	return index;
 }
 
 

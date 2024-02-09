@@ -7,19 +7,12 @@
 #define LOADFACTOR 0.75
 #define INTIAL_CAPACITY 11
 
-typedef struct _Hashentry{
-	void* key;
-	void* value;
-	struct Hashentry* next;
-	struct Hashentry* prev;
-}Hashentry;
-
 typedef struct _Hashtable{
 	Object* object;
 	_int numberOfElements;
 	_int capacity;
 	double loadfactor;
-	Hashentry** entries;
+	void** entries;
 	void (*clear)(void* hashstable);
 	boolean (*containsValue)(void* hashstable, void* value);
 	boolean (*containsKey)(void* hashstable, void* key);

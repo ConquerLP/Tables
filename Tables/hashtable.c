@@ -1,4 +1,15 @@
 #include "hashtable.h"
+#include "string.h"
+
+typedef struct _Hashentry {
+	void* key;
+	void* value;
+	struct Hashentry* next;
+	struct Hashentry* prev;
+}Hashentry;
+
+static void* getKey(Hashentry* entry);
+static void* getValue(Hashentry* entry);
 
 static void* clone(void* object);
 static char* toString(void* object);
@@ -57,7 +68,7 @@ Hashtable* new_Hashtable(double loadfactor, _int initialCapacity)
 {
 	if(loadfactor <= 0.0) ERROR("loadfactor must be positive hashtable.");
 	if(initialCapacity <= 0) ERROR("Initalcapacity must be positive hashtable.");
-	Hashtable* table = new_Hashtable();
+	Hashtable* table = new_HashtableDefault();
 	table->loadfactor = loadfactor;
 	table->capacity = initialCapacity;
 	Malloc(table->entries, Hashentry*, initialCapacity);
@@ -76,7 +87,7 @@ static void* clone(void* object)
 	for(_int i = 0; i < hashtable_ptr->numberOfElements; ++i){
 		clone->entries[i] = hashtable_ptr->entries[i];
 	}
-	updateHashValue(table);
+	updateHashValue(object);
 	return clone;
 }
 
@@ -125,13 +136,15 @@ static void clear(void* hashtable)
 	CHECK(hashtable);
 	Hashtable* hashtable_ptr = hashtable;
 	hashtable_ptr->numberOfElements = 0;
-	for(_int i = 0; i < hashtable_ptr->capacity){
+	for (_int i = 0; i < hashtable_ptr->capacity; ++i) {
 		hashtable_ptr->entries[i] = NULL;
 	}
 }
 
-static boolean containsValue(void* hashtable, void* value);
-static boolean containsKey(void* hashtable, void* key);
+static boolean containsValue(void* hashtable, void* value)
+{}
+static boolean containsKey(void* hashtable, void* key)
+{}
 static void* get(void* hashtable, void* key)
 {
 	
@@ -146,12 +159,18 @@ static boolean isEmpty(void* hashtable)
 	else return false;
 }
 
-static void put(void* hashtable, void* key, void* value);
-static void putIfAbsent(void* hashtable, void* key, void* value);
-static void removeByKey(void* hashtable, void* key);
-static void removeByKeyAndValue(void* hashtable, void* key, void* value);
-static void replaceByKey(void* hashtable, void* key, void* newValue);
-static void replaceByKeyAndValue(void* hashtable, void* key, void* value, void* newValue);
+static void put(void* hashtable, void* key, void* value)
+{}
+static void putIfAbsent(void* hashtable, void* key, void* value)
+{}
+static void removeByKey(void* hashtable, void* key)
+{}
+static void removeByKeyAndValue(void* hashtable, void* key, void* value)
+{}
+static void replaceByKey(void* hashtable, void* key, void* newValue)
+{}
+static void replaceByKeyAndValue(void* hashtable, void* key, void* value, void* newValue)
+{}
 static _int getSize(void* hashtable)
 {
 	CHECK(hashtable);
@@ -159,16 +178,22 @@ static _int getSize(void* hashtable)
 	
 }
 
-static void rehash(void* hashtable);
+static void rehash(void* hashtable)
+{}
 
-static void resize(void* hashtable, _int capacity);
+static void resize(void* hashtable, _int capacity)
+{}
 static _int calcIndex(void* hashtable, void* key)
 {
 	CHECK(hashtable);
 	CHECK(key);
 	Hashtable* hashtable_ptr = hashtable;
 	Object* interface = this(key);
-	if(interface)return interface->getHashvalue(key) % hashtable->capacity;
-	else return INVALID_INDEX
+	if (interface)return interface->getHashvalue(key) % hashtable_ptr->capacity;
+	else return INVALID_INDEX;
 }
 
+static void* getKey(Hashentry* entry)
+{}
+static void* getValue(Hashentry* entry)
+{}

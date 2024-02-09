@@ -2,7 +2,7 @@
 
 #define NODE_H
 
-#include "macros.h"
+#include "macro.h"
 
 typedef struct _Node{
 	void* content;
