@@ -4,12 +4,12 @@
 typedef struct _Hashentry {
 	void* key;
 	void* value;
-	struct Hashentry* next;
-	struct Hashentry* prev;
+	struct _Hashentry* next;
+	struct _Hashentry* prev;
 }Hashentry;
 
-static void* getKey(Hashentry* entry);
-static void* getValue(Hashentry* entry);
+static void* getKey(void* entry);
+static void* getValue(void* entry);
 
 static void* clone(void* object);
 static char* toString(void* object);
@@ -31,6 +31,7 @@ static void rehash(void* hashtable);
 
 static void resize(void* hashtable, _int capacity);
 static _int calcIndex(void* hashtable, void* key);
+static void appendEntry(Hashentry* entry, void* key, void* value);
 
 Hashtable* new_HashtableDefault()
 {
@@ -40,7 +41,7 @@ Hashtable* new_HashtableDefault()
 	table->numberOfElements = 0;
 	table->capacity = INTIAL_CAPACITY;
 	table->loadfactor = LOADFACTOR;
-	Malloc(table->entries, Hashentry*, INTIAL_CAPACITY);
+	Malloc(table->entries, void*, INTIAL_CAPACITY);
 	for(_int i = 0; i < INTIAL_CAPACITY; ++i){
 		table->entries[i] = NULL;
 	}
@@ -147,9 +148,18 @@ static boolean containsKey(void* hashtable, void* key)
 {}
 static void* get(void* hashtable, void* key)
 {
-	
-	
-	
+	CHECK(hashtable);
+	CHECK(key);
+	_int index = calcIndex(hashtable, key);
+	Hashtable* hashtable_ptr = hashtable;
+	Hashentry* entry = hashtable_ptr->entries[index];
+	if (entry) {
+		while (entry) {
+			if (entry->key == key) return entry->value;
+			entry = entry->next;
+		}
+	}
+	return NULL;
 }
 
 static boolean isEmpty(void* hashtable)
@@ -160,7 +170,17 @@ static boolean isEmpty(void* hashtable)
 }
 
 static void put(void* hashtable, void* key, void* value)
-{}
+{
+	CHECK(hashtable);
+	CHECK(key);
+	CHECK(value);
+	_int index = calcIndex(hashtable, key);
+	Hashtable* hashtable_ptr = hashtable;
+	Hashentry* entry = hashtable_ptr->entries[index];
+	if (entry) appendEntry(entry, key, value);
+	else hashtable_ptr->entries[index] = new_Hashentry(key, value);
+}
+
 static void putIfAbsent(void* hashtable, void* key, void* value)
 {}
 static void removeByKey(void* hashtable, void* key)
@@ -175,7 +195,6 @@ static _int getSize(void* hashtable)
 {
 	CHECK(hashtable);
 	return ((Hashtable*)hashtable)->numberOfElements;
-	
 }
 
 static void rehash(void* hashtable)
@@ -189,11 +208,43 @@ static _int calcIndex(void* hashtable, void* key)
 	CHECK(key);
 	Hashtable* hashtable_ptr = hashtable;
 	Object* interface = this(key);
-	if (interface)return interface->getHashvalue(key) % hashtable_ptr->capacity;
-	else return INVALID_INDEX;
+	if (interface) return interface->getHashvalue(key) % hashtable_ptr->capacity;
+	else ERROR("Invalid index calculated in hashtable.");
 }
 
-static void* getKey(Hashentry* entry)
-{}
-static void* getValue(Hashentry* entry)
-{}
+static void* getKey(void* entry)
+{
+	CHECK(entry);
+	return ((Hashentry*)entry)->key;
+}
+
+static void* getValue(void* entry)
+{
+	CHECK(entry);
+	return ((Hashentry*)entry)->value;
+}
+
+static void appendEntry(Hashentry* entry, void* key, void* value)
+{
+	CHECK(entry);
+	CHECK(key);
+	CHECK(value);
+	while (entry->next) {
+		entry = entry->next;
+	}
+	entry->next = new_Hashentry(key, value);
+	entry->next->prev = entry;
+}
+
+static Hashentry* new_Hashentry(void* key, void* value)
+{
+	CHECK(key);
+	CHECK(value);
+	Hashentry* entry;
+	Malloc(entry, Hashentry, 1);
+	entry->key = key;
+	entry->value = value;
+	entry->next = NULL;
+	entry->prev = NULL;
+	return entry;
+}
