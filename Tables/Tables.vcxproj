@@ -37,7 +37,9 @@
     <ClCompile Include="array.c" />
     <ClCompile Include="arrayList.c" />
     <ClCompile Include="char.c" />
+    <ClCompile Include="double.c" />
     <ClCompile Include="hashtable.c" />
+    <ClCompile Include="int.c" />
     <ClCompile Include="list.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="node.c" />

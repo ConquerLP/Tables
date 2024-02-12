@@ -98,5 +98,11 @@
     <ClCompile Include="char.c">
       <Filter>Quelldateien\Primitives</Filter>
     </ClCompile>
+    <ClCompile Include="int.c">
+      <Filter>Quelldateien\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="double.c">
+      <Filter>Quelldateien\Primitives</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
