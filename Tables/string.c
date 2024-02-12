@@ -5,7 +5,12 @@ static char* toString(void* object);
 static _int getHashvalue(void* object);
 
 static void append(void* string, char* text);
-static void setString(String* string, char* new_text);
+static void setString(void* string, char* new_text);
+
+String* new_StringChar(char c)
+{
+	return new_String(CHAR_TO_STRING(c));
+}
 
 String* new_String(char* text)
 {
@@ -58,9 +63,9 @@ static void append(void* string, char* text)
 	setString(string, new_text);
 }
 
-static void setString(String* string, char* new_text)
+static void setString(void* string, char* new_text)
 {
 	CHECK(string);
-	COPY_STRING(string->string, new_text);
+	COPY_STRING(((String*)string)->string, new_text);
 	updateHashValue(string);
 }

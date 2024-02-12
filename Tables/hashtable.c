@@ -32,6 +32,7 @@ static void rehash(void* hashtable);
 static void resize(void* hashtable, _int capacity);
 static _int calcIndex(void* hashtable, void* key);
 static void appendEntry(Hashentry* entry, void* key, void* value);
+static Hashentry* new_Hashentry(void* key, void* value);
 
 Hashtable* new_HashtableDefault()
 {
@@ -143,9 +144,13 @@ static void clear(void* hashtable)
 }
 
 static boolean containsValue(void* hashtable, void* value)
-{}
+{
+	return true;
+}
 static boolean containsKey(void* hashtable, void* key)
-{}
+{
+	return true;
+}
 static void* get(void* hashtable, void* key)
 {
 	CHECK(hashtable);
@@ -177,7 +182,7 @@ static void put(void* hashtable, void* key, void* value)
 	_int index = calcIndex(hashtable, key);
 	Hashtable* hashtable_ptr = hashtable;
 	Hashentry* entry = hashtable_ptr->entries[index];
-	if (entry) appendEntry(entry, key, value);
+	if(entry) appendEntry(entry, key, value);
 	else hashtable_ptr->entries[index] = new_Hashentry(key, value);
 }
 
@@ -202,6 +207,7 @@ static void rehash(void* hashtable)
 
 static void resize(void* hashtable, _int capacity)
 {}
+
 static _int calcIndex(void* hashtable, void* key)
 {
 	CHECK(hashtable);

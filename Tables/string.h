@@ -12,5 +12,6 @@ typedef struct _String{
 }String;
 
 String* new_String(char* text);
+String* new_StringChar(char c);
 
 #endif

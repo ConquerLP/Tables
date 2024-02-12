@@ -36,7 +36,7 @@ Stack* new_Stack(_int stackSize)
 static void* clone(void* object)
 {
 	CHECK(object);
-	Stack* clone = new_Stack(((Stack*)object)->stackSize);
+	return new_Stack(((Stack*)object)->stackSize);
 }
 
 static char* toString(void* object)

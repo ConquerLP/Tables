@@ -13,43 +13,58 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Headerdateien\BaseClasses">
+    <Filter Include="Quelldateien\Util">
+      <UniqueIdentifier>{e97c34db-7c23-4c78-8a8c-785cb572fcf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Util">
       <UniqueIdentifier>{90fe1006-0231-4199-8802-c320013bef22}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Quelldateien\BaseBlasses">
-      <UniqueIdentifier>{e97c34db-7c23-4c78-8a8c-785cb572fcf5}</UniqueIdentifier>
+    <Filter Include="Headerdateien\Primitives">
+      <UniqueIdentifier>{ebeb7fec-a44f-4c60-8a8a-3ac21c4d7a21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Primitives">
+      <UniqueIdentifier>{fb2701a0-3200-4eac-8595-d241b6595689}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="array.h">
-      <Filter>Headerdateien\BaseClasses</Filter>
+      <Filter>Headerdateien\Util</Filter>
     </ClInclude>
     <ClInclude Include="arrayList.h">
-      <Filter>Headerdateien\BaseClasses</Filter>
+      <Filter>Headerdateien\Util</Filter>
     </ClInclude>
     <ClInclude Include="hashtable.h">
-      <Filter>Headerdateien\BaseClasses</Filter>
+      <Filter>Headerdateien\Util</Filter>
     </ClInclude>
     <ClInclude Include="list.h">
-      <Filter>Headerdateien\BaseClasses</Filter>
+      <Filter>Headerdateien\Util</Filter>
     </ClInclude>
     <ClInclude Include="node.h">
-      <Filter>Headerdateien\BaseClasses</Filter>
+      <Filter>Headerdateien\Util</Filter>
     </ClInclude>
     <ClInclude Include="object.h">
-      <Filter>Headerdateien\BaseClasses</Filter>
+      <Filter>Headerdateien\Util</Filter>
     </ClInclude>
     <ClInclude Include="stack.h">
-      <Filter>Headerdateien\BaseClasses</Filter>
+      <Filter>Headerdateien\Util</Filter>
     </ClInclude>
     <ClInclude Include="string.h">
-      <Filter>Headerdateien\BaseClasses</Filter>
+      <Filter>Headerdateien\Util</Filter>
     </ClInclude>
     <ClInclude Include="macro.h">
-      <Filter>Headerdateien\BaseClasses</Filter>
+      <Filter>Headerdateien\Util</Filter>
     </ClInclude>
     <ClInclude Include="stdlib.h">
       <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="double.h">
+      <Filter>Headerdateien\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="int.h">
+      <Filter>Headerdateien\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="char.h">
+      <Filter>Headerdateien\Primitives</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -57,28 +72,31 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="array.c">
-      <Filter>Quelldateien\BaseBlasses</Filter>
+      <Filter>Quelldateien\Util</Filter>
     </ClCompile>
     <ClCompile Include="arrayList.c">
-      <Filter>Quelldateien\BaseBlasses</Filter>
+      <Filter>Quelldateien\Util</Filter>
     </ClCompile>
     <ClCompile Include="hashtable.c">
-      <Filter>Quelldateien\BaseBlasses</Filter>
+      <Filter>Quelldateien\Util</Filter>
     </ClCompile>
     <ClCompile Include="list.c">
-      <Filter>Quelldateien\BaseBlasses</Filter>
+      <Filter>Quelldateien\Util</Filter>
     </ClCompile>
     <ClCompile Include="node.c">
-      <Filter>Quelldateien\BaseBlasses</Filter>
+      <Filter>Quelldateien\Util</Filter>
     </ClCompile>
     <ClCompile Include="objects.c">
-      <Filter>Quelldateien\BaseBlasses</Filter>
+      <Filter>Quelldateien\Util</Filter>
     </ClCompile>
     <ClCompile Include="stack.c">
-      <Filter>Quelldateien\BaseBlasses</Filter>
+      <Filter>Quelldateien\Util</Filter>
     </ClCompile>
     <ClCompile Include="string.c">
-      <Filter>Quelldateien\BaseBlasses</Filter>
+      <Filter>Quelldateien\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="char.c">
+      <Filter>Quelldateien\Primitives</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

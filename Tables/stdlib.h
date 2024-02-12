@@ -10,5 +10,8 @@
 #include "list.h"
 #include "stack.h"
 #include "string.h"
+#include "char.h"
+#include "int.h"
+#include "double.h"
 
 #endif

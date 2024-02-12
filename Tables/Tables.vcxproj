@@ -21,7 +21,10 @@
   <ItemGroup>
     <ClInclude Include="array.h" />
     <ClInclude Include="arrayList.h" />
+    <ClInclude Include="char.h" />
+    <ClInclude Include="double.h" />
     <ClInclude Include="hashtable.h" />
+    <ClInclude Include="int.h" />
     <ClInclude Include="list.h" />
     <ClInclude Include="macro.h" />
     <ClInclude Include="node.h" />
@@ -33,6 +36,7 @@
   <ItemGroup>
     <ClCompile Include="array.c" />
     <ClCompile Include="arrayList.c" />
+    <ClCompile Include="char.c" />
     <ClCompile Include="hashtable.c" />
     <ClCompile Include="list.c" />
     <ClCompile Include="main.c" />
